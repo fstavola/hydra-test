@@ -1,0 +1,23 @@
+s0.initVideo(NaN);
+s1.initCam();
+src(s0)
+	.sub(src(s1)
+		.diff(s0))
+	.out(o3);
+// .kaleid(6)
+// .rotate(0.8)
+// .pixelate(20, 30)
+shape(1.857)
+	.scrollX(-0.607, 0.11)
+	.mult(src(s1)
+		.diff(s0))
+	.out(o1);
+noise(0.075, 2)
+	.diff(src(s1)
+		.diff(s0))
+	.out(o2);
+voronoi( () => 10*mouse.x / width, () => -mouse.y / height)
+	.add(src(s1)
+		.diff(s0))
+	.out(o0);
+render();
